@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>数组刷题</title>
+      <link href="/2024/01/22/shu-zu-shua-ti/"/>
+      <url>/2024/01/22/shu-zu-shua-ti/</url>
+      
+        <content type="html"><![CDATA[<h1 id="leetcode刷题第一天"><a href="#leetcode刷题第一天" class="headerlink" title="leetcode刷题第一天"></a>leetcode刷题第一天</h1><h2 id="数组类题目"><a href="#数组类题目" class="headerlink" title="数组类题目"></a>数组类题目</h2><h3 id="1两数之和"><a href="#1两数之和" class="headerlink" title="1两数之和"></a>1两数之和</h3><h4 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h4><p>给定一个整数数组 nums&nbsp;和一个目标值 target，请你在该数组中找出和为目标值的那&nbsp;两个&nbsp;整数，并返回他们的数组下标。</p><p>你可以假设每种输入只会对应一个答案。但是，数组中同一个元素不能使用两遍。</p><p><strong>示例:</strong></p><p>给定 nums = [2, 7, 11, 15], target = 9</p><p>因为 nums[0] + nums[1] = 2 + 7 = 9</p><p>所以返回 [0, 1]</p><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><h5 id="第一种暴力求解"><a href="#第一种暴力求解" class="headerlink" title="第一种暴力求解"></a>第一种暴力求解</h5><p>首先对数组元素遍历，第一遍每一次得到一个数，之后进行第二次遍历，将剩下的数字与每一次第一遍的数进行相加，与目标值进行比较，得到即返回数组下标值</p><p>可修改处：</p><p>1.若每种输入不只会对应一个答案，修改方案如何？</p><p>2.把两数之和扩展为n数之和，如何进行优化？</p><p>第一种暴力求解代码</p><p>C语言版</p><figure class="highlight c"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></tbody></table></figure><h5 id="第二种先排序再查找"><a href="#第二种先排序再查找" class="headerlink" title="第二种先排序再查找"></a>第二种先排序再查找</h5><p>可解决第一个问题，处理多答案的方案</p><p>首先复习一下排序的知识</p><p>排序算法包括内部排序，外部排序</p><table><thead><tr><th>插入</th><th>交换</th><th>选择</th><th>其他</th><th>外部</th></tr></thead><tbody><tr><td>直接插入</td><td>冒泡</td><td>简单选择</td><td>归并</td><td>多路归并</td></tr><tr><td>折半插入</td><td>快速</td><td>堆排序</td><td>基数</td><td></td></tr><tr><td>希尔</td><td></td><td></td><td></td><td></td></tr></tbody></table><p>之后是查找的知识</p><p>1.顺序查找法</p><p>2.分块查找发</p><p>3.折半查找法</p><p>4.树形查找</p><p>5.b树</p><p>6.哈希表</p><h5 id="第三种哈希表"><a href="#第三种哈希表" class="headerlink" title="第三种哈希表"></a>第三种哈希表</h5><p>哈希表知识学习</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>my-first-blog</title>
       <link href="/2024/01/16/my-first-blog/"/>
       <url>/2024/01/16/my-first-blog/</url>
