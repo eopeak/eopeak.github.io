@@ -6,7 +6,7 @@
   <link href="https://eopeak.github.io/atom.xml" rel="self"/>
   
   <link href="https://eopeak.github.io/"/>
-  <updated>2024-01-22T04:03:56.842Z</updated>
+  <updated>2024-01-24T06:23:03.179Z</updated>
   <id>https://eopeak.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>图像压缩学习</title>
+    <link href="https://eopeak.github.io/2024/01/22/tu-xiang-ya-suo-xue-xi/"/>
+    <id>https://eopeak.github.io/2024/01/22/tu-xiang-ya-suo-xue-xi/</id>
+    <published>2024-01-22T04:10:50.000Z</published>
+    <updated>2024-01-24T06:23:03.179Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="图像压缩算法"><a href="#图像压缩算法" class="headerlink" title="图像压缩算法"></a>图像压缩算法</h1><h2 id="图像压缩简介"><a href="#图像压缩简介" class="headerlink" title="图像压缩简介"></a>图像压缩简介</h2><p>小波变换的一般模型</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-13-58-34-image.png"></p><p>典型的方法: EZW, SPIHT, EBCOT</p><h3 id="图像边界处理"><a href="#图像边界处理" class="headerlink" title="图像边界处理"></a>图像边界处理</h3><p>图像小波分解是将图像数据与滤波器系数进行线性卷积运算，使滤波器的输出样点数大于输入的样点性卷积运算，使滤波器的输出样点数大于输入的样点数；但从子带压缩编码的效率看，是希望各子图信号的样点数总数不大于原始图像信号的样点数，且子图信号应能完全重构其原始信号信号应能完全重构其原始信号。常用的方法是对信号常用的方法是对信号进行边界延拓。</p><h3 id="小波图像编码"><a href="#小波图像编码" class="headerlink" title="小波图像编码"></a>小波图像编码</h3><p>不同分辨率子带之间数据的相关性.</p><img title="" src="file:///C:/Users/12856/AppData/Roaming/marktext/images/2024-01-24-14-04-48-image.png" alt="" width="290"><h3 id="小波系数的零树特性"><a href="#小波系数的零树特性" class="headerlink" title="小波系数的零树特性"></a>小波系数的零树特性</h3><p>对于给定的阈值T，若小波系数x满足|x|&lt;=T，则称x关于T是不重要的</p><p>系数。</p><p>实验统计表明，若一个小波系数关于T是不重要的，则它的所有子孙</p><p>系数关于T是不重要系数的概率在98%以上[该结论仅供参考]</p><h3 id="小波零树编码"><a href="#小波零树编码" class="headerlink" title="小波零树编码"></a>小波零树编码</h3><p>1992，Lewis and Knowles 利用小波树中各级子带系数之间的相似性，最早提出了小波零树编码算法。该算法将量化后系数为零的系数的子孙系数都指定为零。</p><h2 id="嵌入式零树算法"><a href="#嵌入式零树算法" class="headerlink" title="嵌入式零树算法"></a>嵌入式零树算法</h2><p>基本概念：重要系数，不重要系数(相对某个阈值) P  N    T     Z（2比特标识符）</p><p>扫描顺序：从低精度到高精度</p><p>初始系数表</p><img src="file:///C:/Users/12856/AppData/Roaming/marktext/images/2024-01-24-14-16-16-image.png" title="" alt="" width="229"><h3 id="编码过程"><a href="#编码过程" class="headerlink" title="编码过程"></a>编码过程</h3><h4 id="选择阈值"><a href="#选择阈值" class="headerlink" title="选择阈值"></a>选择阈值</h4><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-10-53-image.png"></p><p>每一次阈值除二</p><h3 id="主扫描"><a href="#主扫描" class="headerlink" title="主扫描"></a>主扫描</h3><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-20-44-image.png"></p><p>每轮扫描后，将P N，输出为0，Z T暂时不变</p><h3 id="辅扫描"><a href="#辅扫描" class="headerlink" title="辅扫描"></a>辅扫描</h3><p>对正，负系数的幅值进行编码</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-13-30-image.png"></p><h3 id="输出编码信息"><a href="#输出编码信息" class="headerlink" title="输出编码信息"></a>输出编码信息</h3><p>包括两类，一类是本轮完成的信息，一类是下次扫描的信息，即将上一轮P N置0后得到的新的系数表与上一轮的阈值的一半，进行处理。</p><img src="file:///C:/Users/12856/AppData/Roaming/marktext/images/2024-01-24-14-21-19-image.png" title="" alt="" width="445"><p>新一轮，如图</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-15-48-image.png"></p><p>之后得到输出结果</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-21-50-image.png"></p><p>EZW编码与位平面的关系</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-17-29-image.png"></p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-18-20-image.png"></p><p>接下来是解码</p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-19-13-image.png"></p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-19-27-image.png"></p><p><img src="C:\Users\12856\AppData\Roaming\marktext\images\2024-01-24-14-19-50-image.png"></p><h1 id="SPIHT编码"><a href="#SPIHT编码" class="headerlink" title="SPIHT编码"></a>SPIHT编码</h1><h1 id="EBCOT编码"><a href="#EBCOT编码" class="headerlink" title="EBCOT编码"></a>EBCOT编码</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;图像压缩算法&quot;&gt;&lt;a href=&quot;#图像压缩算法&quot; class=&quot;headerlink&quot; title=&quot;图像压缩算法&quot;&gt;&lt;/a&gt;图像压缩算法&lt;/h1&gt;&lt;h2 id=&quot;图像压缩简介&quot;&gt;&lt;a href=&quot;#图像压缩简介&quot; class=&quot;headerlink&quot; titl</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>小波学习</title>
+    <link href="https://eopeak.github.io/2024/01/22/xiao-bo-xue-xi/"/>
+    <id>https://eopeak.github.io/2024/01/22/xiao-bo-xue-xi/</id>
+    <published>2024-01-22T04:10:31.000Z</published>
+    <updated>2024-01-22T04:10:31.688Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>数组刷题</title>
